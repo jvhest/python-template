@@ -1,6 +1,6 @@
 """Tests goes here."""
 
-from tesje_cc.calculator import add
+from {{ cookiecutter.__package_name }}.calculator import add
 
 
 def test_add() -> None:

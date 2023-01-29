@@ -1,7 +1,7 @@
 """Main cli or app entry point."""
 
 import click
-from tesje_cc.calculator import add
+from {{ cookiecutter.__package_name }}.calculator import add
 
 
 @click.command("add")
