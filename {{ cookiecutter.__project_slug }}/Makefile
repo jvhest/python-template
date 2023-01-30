@@ -3,20 +3,16 @@ install: ## Install the poetry environment and install the pre-commit hooks
 	@pyenv local 3.10
 	@echo "🚀 creating virtual environment using pyenv and poetry..."
 	@poetry install
-	@echo "🚀 creating git repository..."
-	@git init -b main
-	@poetry run pre-commit install
 	@echo "🚀 setup direnv..."
 	@./create_envrc.sh
 	@direnv allow .envrc
-	@echo "🚀 do first commit..."
-	@git add .
-	@poetry run pre-commit run -a
-	@git commit -m "first-commit"
 
-.PHONY: first-commit
-first-commit:
-	@echo "🚀 Do first commit"
+.PHONY: git-repo
+git-repo:
+	@echo "🚀 creating git repository..."
+	@git init -b main
+	@poetry run pre-commit install
+	@echo "🚀 do first commit..."
 	@git add .
 	@poetry run pre-commit run -a
 	@git commit -m "first-commit"

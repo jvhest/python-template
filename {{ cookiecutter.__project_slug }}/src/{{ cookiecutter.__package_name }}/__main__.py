@@ -1,6 +1,6 @@
 """Main cli or app entry point."""
 
-from test.calculator import add
+from {{ cookiecutter.__package_name }}.calculator import add
 
 import click
 
