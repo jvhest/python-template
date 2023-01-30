@@ -1,15 +1,18 @@
 install: ## Install the poetry environment and install the pre-commit hooks
-	@echo "🚀 Set pyenv local python version"
+	@echo "🚀 set pyenv local python version..."
 	@pyenv local 3.10
-	@echo "🚀 Creating virtual environment using pyenv and poetry"
+	@echo "🚀 creating virtual environment using pyenv and poetry..."
 	@poetry install
-	@echo "🚀 Creating git repository"
+	@echo "🚀 creating git repository..."
 	@git init -b main
 	@poetry run pre-commit install
-{%- if cookiecutter.direnv == 'y' %}
+	@echo "🚀 setup direnv..."
 	@./create_envrc.sh
 	@direnv allow .envrc
-{%- endif %}
+	@echo "🚀 do first commit..."
+	@git add .
+	@poetry run pre-commit run -a
+	@git commit -m "first-commit"
 
 .PHONY: first-commit
 first-commit:
